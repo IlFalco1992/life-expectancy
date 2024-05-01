@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Life expectancy ruler</title>
+</head>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        data = {
+            "Malaysia": {
+                "SEX_MLE": "72.61",
+                "SEX_FMLE": "77.08"
+            },
+            "Eritrea": {
+                "SEX_MLE": "61.3",
+                "SEX_FMLE": "67.07"
+            },
+            "Angola": {
+                "SEX_MLE": "60.7",
+                "SEX_FMLE": "65.52"
+            },
+            "Norway": {
+                "SEX_MLE": "81.08",
+                "SEX_FMLE": "84.13"
+            },
+            "Estonia": {
+                "SEX_MLE": "74.7",
+                "SEX_FMLE": "82.6"
+            },
+            "Thailand": {
+                "SEX_MLE": "74.36",
+                "SEX_FMLE": "81.04"
+            },
+            "Benin": {
+                "SEX_MLE": "61.19",
+                "SEX_FMLE": "65.66"
+            },
+            "Denmark": {
+                "SEX_MLE": "79.59",
+                "SEX_FMLE": "83.02"
+            },
+            "Finland": {
+                "SEX_MLE": "79.16",
+                "SEX_FMLE": "84.04"
+            },
+            "Haiti": {
+                "SEX_MLE": "63.34",
+                "SEX_FMLE": "64.76"
+            },
+            "Maldives": {
+                "SEX_MLE": "78.63",
+                "SEX_FMLE": "80.76"
+            },
+            "Ghana": {
+                "SEX_MLE": "63.66",
+                "SEX_FMLE": "69.16"
+            },
+            "Dominican Republic": {
+                "SEX_MLE": "69.76",
+                "SEX_FMLE": "76.19"
+            },
+            "Ethiopia": {
+                "SEX_MLE": "66.9",
+                "SEX_FMLE": "70.52"
+            },
+            "Netherlands": {
+                "SEX_MLE": "80.4",
+                "SEX_FMLE": "83.15"
+            },
+            "United Republic of Tanzania": {
+                "SEX_MLE": "65.37",
+                "SEX_FMLE": "69.26"
+            },
+            "Australia": {
+                "SEX_MLE": "81.25",
+                "SEX_FMLE": "84.84"
+            },
+            "Iraq": {
+                "SEX_MLE": "69.93",
+                "SEX_FMLE": "74.97"
+            },
+            "Pakistan": {
+                "SEX_MLE": "64.59",
+                "SEX_FMLE": "66.72"
+            },
+            "South Sudan": {
+                "SEX_MLE": "60.83",
+                "SEX_FMLE": "64.84"
+            },
+            "Montenegro": {
+                "SEX_MLE": "73.15",
+                "SEX_FMLE": "78.65"
+            },
+            "Belize": {
+                "SEX_MLE": "71.36",
+                "SEX_FMLE": "77.77"
+            },
+            "Democratic Republic of the Congo": {
+                "SEX_MLE": "60",
+                "SEX_FMLE": "64.82"
+            },
+            "Uganda": {
+                "SEX_MLE": "63.24",
+                "SEX_FMLE": "70.1"
+            },
+            "Equatorial Guinea": {
+                "SEX_MLE": "60.87",
+                "SEX_FMLE": "63.58"
+            },
+            "Kiribati": {
+                "SEX_MLE": "56.14",
+                "SEX_FMLE": "62.8"
+            },
+            "Mauritius": {
+                "SEX_MLE": "70.95",
+                "SEX_FMLE": "77.32"
+            },
+            "Russian Federation": {
+                "SEX_MLE": "68.18",
+                "SEX_FMLE": "78"
+            },
+            "Solomon Islands": {
+                "SEX_MLE": "62.87",
+                "SEX_FMLE": "67.87"
+            },
+            "Kuwait": {
+                "SEX_MLE": "79.25",
+                "SEX_FMLE": "83.95"
+            },
+            "Côte d’Ivoire": {
+                "SEX_MLE": "60.53",
+                "SEX_FMLE": "65.81"
+            },
+            "Ukraine": {
+                "SEX_MLE": "68",
+                "SEX_FMLE": "77.81"
+            },
+            "France": {
+                "SEX_MLE": "79.76",
+                "SEX_FMLE": "85.09"
+            },
+            "Azerbaijan": {
+                "SEX_MLE": "68.78",
+                "SEX_FMLE": "74.09"
+            },
+            "New Zealand": {
+                "SEX_MLE": "80.36",
+                "SEX_FMLE": "83.52"
+            },
+            "Albania": {
+                "SEX_MLE": "76.25",
+                "SEX_FMLE": "79.91"
+            },
+            "Bosnia and Herzegovina": {
+                "SEX_MLE": "74.38",
+                "SEX_FMLE": "79.09"
+            },
+            "Malta": {
+                "SEX_MLE": "79.94",
+                "SEX_FMLE": "83.8"
+            },
+            "Algeria": {
+                "SEX_MLE": "76.23",
+                "SEX_FMLE": "78.12"
+            },
+            "Mexico": {
+                "SEX_MLE": "73.13",
+                "SEX_FMLE": "78.86"
+            },
+            "Venezuela (Bolivarian Republic of)": {
+                "SEX_MLE": "69.91",
+                "SEX_FMLE": "78.17"
+            },
+            "Poland": {
+                "SEX_MLE": "74.53",
+                "SEX_FMLE": "81.93"
+            },
+            "Togo": {
+                "SEX_MLE": "61.52",
+                "SEX_FMLE": "67.23"
+            },
+            "Serbia": {
+                "SEX_MLE": "73.46",
+                "SEX_FMLE": "78.28"
+            },
+            "Seychelles": {
+                "SEX_MLE": "69.98",
+                "SEX_FMLE": "77.15"
+            },
+            "Oman": {
+                "SEX_MLE": "72.97",
+                "SEX_FMLE": "75.26"
+            },
+            "Fiji": {
+                "SEX_MLE": "65.93",
+                "SEX_FMLE": "70.28"
+            },
+            "Liberia": {
+                "SEX_MLE": "63.15",
+                "SEX_FMLE": "65"
+            },
+            "Guyana": {
+                "SEX_MLE": "62.45",
+                "SEX_FMLE": "69.39"
+            },
+            "Türkiye": {
+                "SEX_MLE": "76.44",
+                "SEX_FMLE": "80.67"
+            },
+            "Hungary": {
+                "SEX_MLE": "73.09",
+                "SEX_FMLE": "79.59"
+            },
+            "Micronesia (Federated States of)": {
+                "SEX_MLE": "60.35",
+                "SEX_FMLE": "66.05"
+            },
+            "Uruguay": {
+                "SEX_MLE": "73.48",
+                "SEX_FMLE": "80.56"
+            },
+            "South Africa": {
+                "SEX_MLE": "62.2",
+                "SEX_FMLE": "68.29"
+            },
+            "Papua New Guinea": {
+                "SEX_MLE": "63.4",
+                "SEX_FMLE": "67.36"
+            },
+            "Chile": {
+                "SEX_MLE": "78.09",
+                "SEX_FMLE": "83.25"
+            },
+            "Comoros": {
+                "SEX_MLE": "65.92",
+                "SEX_FMLE": "68.88"
+            },
+            "Namibia": {
+                "SEX_MLE": "60.58",
+                "SEX_FMLE": "68.45"
+            },
+            "United Arab Emirates": {
+                "SEX_MLE": "75.1",
+                "SEX_FMLE": "78.42"
+            },
+            "China": {
+                "SEX_MLE": "74.73",
+                "SEX_FMLE": "80.49"
+            },
+            "Cyprus": {
+                "SEX_MLE": "81.12",
+                "SEX_FMLE": "85.12"
+            },
+            "Saint Lucia": {
+                "SEX_MLE": "71.3",
+                "SEX_FMLE": "77.71"
+            },
+            "Central African Republic": {
+                "SEX_MLE": "50.21",
+                "SEX_FMLE": "56.26"
+            },
+            "Latvia": {
+                "SEX_MLE": "70.58",
+                "SEX_FMLE": "79.84"
+            },
+            "Kazakhstan": {
+                "SEX_MLE": "69.98",
+                "SEX_FMLE": "77.61"
+            },
+            "Egypt": {
+                "SEX_MLE": "69.59",
+                "SEX_FMLE": "74.14"
+            },
+            "Cameroon": {
+                "SEX_MLE": "60.29",
+                "SEX_FMLE": "64.5"
+            },
+            "Portugal": {
+                "SEX_MLE": "78.56",
+                "SEX_FMLE": "84.4"
+            },
+            "Republic of Moldova": {
+                "SEX_MLE": "69.26",
+                "SEX_FMLE": "77.12"
+            },
+            "Senegal": {
+                "SEX_MLE": "66.82",
+                "SEX_FMLE": "70.14"
+            },
+            "Djibouti": {
+                "SEX_MLE": "64.1",
+                "SEX_FMLE": "67.78"
+            },
+            "Ireland": {
+                "SEX_MLE": "80.2",
+                "SEX_FMLE": "83.48"
+            },
+            "Ecuador": {
+                "SEX_MLE": "76.41",
+                "SEX_FMLE": "80.5"
+            },
+            "Saudi Arabia": {
+                "SEX_MLE": "73.11",
+                "SEX_FMLE": "76.15"
+            },
+            "Philippines": {
+                "SEX_MLE": "67.4",
+                "SEX_FMLE": "73.6"
+            },
+            "Vanuatu": {
+                "SEX_MLE": "62.66",
+                "SEX_FMLE": "68.32"
+            },
+            "United Kingdom of Great Britain and Northern Ireland": {
+                "SEX_MLE": "79.79",
+                "SEX_FMLE": "82.99"
+            },
+            "Peru": {
+                "SEX_MLE": "78.46",
+                "SEX_FMLE": "81.34"
+            },
+            "Republic of Korea": {
+                "SEX_MLE": "80.32",
+                "SEX_FMLE": "86.09"
+            },
+            "Bahamas": {
+                "SEX_MLE": "69.85",
+                "SEX_FMLE": "76.59"
+            },
+            "Georgia": {
+                "SEX_MLE": "68.79",
+                "SEX_FMLE": "77.76"
+            },
+            "Guinea": {
+                "SEX_MLE": "59.48",
+                "SEX_FMLE": "62.25"
+            },
+            "Switzerland": {
+                "SEX_MLE": "81.75",
+                "SEX_FMLE": "85.08"
+            },
+            "Singapore": {
+                "SEX_MLE": "81.05",
+                "SEX_FMLE": "85.45"
+            },
+            "Sweden": {
+                "SEX_MLE": "80.83",
+                "SEX_FMLE": "83.97"
+            },
+            "Slovakia": {
+                "SEX_MLE": "74.84",
+                "SEX_FMLE": "81.44"
+            },
+            "Trinidad and Tobago": {
+                "SEX_MLE": "72.54",
+                "SEX_FMLE": "79.92"
+            },
+            "Sao Tome and Principe": {
+                "SEX_MLE": "68.79",
+                "SEX_FMLE": "71.99"
+            },
+            "Guinea-Bissau": {
+                "SEX_MLE": "57.36",
+                "SEX_FMLE": "62.98"
+            },
+            "Paraguay": {
+                "SEX_MLE": "73.08",
+                "SEX_FMLE": "78.85"
+            },
+            "Mongolia": {
+                "SEX_MLE": "63.82",
+                "SEX_FMLE": "72.76"
+            },
+            "Luxembourg": {
+                "SEX_MLE": "80.62",
+                "SEX_FMLE": "84.2"
+            },
+            "Lao People's Democratic Republic": {
+                "SEX_MLE": "66.19",
+                "SEX_FMLE": "70.95"
+            },
+            "Zimbabwe": {
+                "SEX_MLE": "57.51",
+                "SEX_FMLE": "63.61"
+            },
+            "Indonesia": {
+                "SEX_MLE": "69.4",
+                "SEX_FMLE": "73.3"
+            },
+            "Turkmenistan": {
+                "SEX_MLE": "66.48",
+                "SEX_FMLE": "72.97"
+            },
+            "Afghanistan": {
+                "SEX_MLE": "63.29",
+                "SEX_FMLE": "63.16"
+            },
+            "Mozambique": {
+                "SEX_MLE": "54.46",
+                "SEX_FMLE": "61.73"
+            },
+            "Lithuania": {
+                "SEX_MLE": "71.23",
+                "SEX_FMLE": "80.43"
+            },
+            "Honduras": {
+                "SEX_MLE": "70.67",
+                "SEX_FMLE": "73.16"
+            },
+            "Libya": {
+                "SEX_MLE": "74.21",
+                "SEX_FMLE": "77.34"
+            },
+            "Viet Nam": {
+                "SEX_MLE": "69.56",
+                "SEX_FMLE": "78.11"
+            },
+            "Niger": {
+                "SEX_MLE": "62.06",
+                "SEX_FMLE": "64.56"
+            },
+            "Chad": {
+                "SEX_MLE": "57.95",
+                "SEX_FMLE": "61.34"
+            },
+            "India": {
+                "SEX_MLE": "69.52",
+                "SEX_FMLE": "72.17"
+            },
+            "Nicaragua": {
+                "SEX_MLE": "72.07",
+                "SEX_FMLE": "77.93"
+            },
+            "Kenya": {
+                "SEX_MLE": "63.7",
+                "SEX_FMLE": "68.44"
+            },
+            "Burundi": {
+                "SEX_MLE": "61.55",
+                "SEX_FMLE": "66.14"
+            },
+            "Uzbekistan": {
+                "SEX_MLE": "70.76",
+                "SEX_FMLE": "75.21"
+            },
+            "Mali": {
+                "SEX_MLE": "62.2",
+                "SEX_FMLE": "63.4"
+            },
+            "Slovenia": {
+                "SEX_MLE": "78.59",
+                "SEX_FMLE": "84.06"
+            },
+            "Iceland": {
+                "SEX_MLE": "80.81",
+                "SEX_FMLE": "83.87"
+            },
+            "Qatar": {
+                "SEX_MLE": "78.03",
+                "SEX_FMLE": "76.63"
+            },
+            "Greece": {
+                "SEX_MLE": "78.64",
+                "SEX_FMLE": "83.57"
+            },
+            "The former Yugoslav Republic of Macedonia": {
+                "SEX_MLE": "72.84",
+                "SEX_FMLE": "76.87"
+            },
+            "Kyrgyzstan": {
+                "SEX_MLE": "70.75",
+                "SEX_FMLE": "77.31"
+            },
+            "Yemen": {
+                "SEX_MLE": "64.41",
+                "SEX_FMLE": "68.92"
+            },
+            "Democratic People's Republic of Korea": {
+                "SEX_MLE": "69.29",
+                "SEX_FMLE": "75.69"
+            },
+            "Bolivia (Plurinational State of)": {
+                "SEX_MLE": "71.15",
+                "SEX_FMLE": "73.13"
+            },
+            "Samoa": {
+                "SEX_MLE": "69.16",
+                "SEX_FMLE": "71.85"
+            },
+            "Suriname": {
+                "SEX_MLE": "68.5",
+                "SEX_FMLE": "74.63"
+            },
+            "Bulgaria": {
+                "SEX_MLE": "71.65",
+                "SEX_FMLE": "78.6"
+            },
+            "Sierra Leone": {
+                "SEX_MLE": "59.6",
+                "SEX_FMLE": "61.9"
+            },
+            "Syrian Arab Republic": {
+                "SEX_MLE": "71.18",
+                "SEX_FMLE": "74.26"
+            },
+            "Guatemala": {
+                "SEX_MLE": "68.95",
+                "SEX_FMLE": "75.04"
+            },
+            "Tunisia": {
+                "SEX_MLE": "74.88",
+                "SEX_FMLE": "79.19"
+            },
+            "Antigua and Barbuda": {
+                "SEX_MLE": "74.88",
+                "SEX_FMLE": "77.96"
+            },
+            "Cabo Verde": {
+                "SEX_MLE": "69.9",
+                "SEX_FMLE": "77.94"
+            },
+            "Jordan": {
+                "SEX_MLE": "77.02",
+                "SEX_FMLE": "78.78"
+            },
+            "Croatia": {
+                "SEX_MLE": "75.54",
+                "SEX_FMLE": "81.6"
+            },
+            "El Salvador": {
+                "SEX_MLE": "70.58",
+                "SEX_FMLE": "79.13"
+            },
+            "Bhutan": {
+                "SEX_MLE": "72.03",
+                "SEX_FMLE": "74.39"
+            },
+            "Botswana": {
+                "SEX_MLE": "58.95",
+                "SEX_FMLE": "65.46"
+            },
+            "Saint Vincent and the Grenadines": {
+                "SEX_MLE": "71.32",
+                "SEX_FMLE": "75.32"
+            },
+            "Belarus": {
+                "SEX_MLE": "69.65",
+                "SEX_FMLE": "79.62"
+            },
+            "Jamaica": {
+                "SEX_MLE": "74.36",
+                "SEX_FMLE": "77.68"
+            },
+            "Barbados": {
+                "SEX_MLE": "74.32",
+                "SEX_FMLE": "77.66"
+            },
+            "Cambodia": {
+                "SEX_MLE": "67.23",
+                "SEX_FMLE": "72.75"
+            },
+            "Panama": {
+                "SEX_MLE": "76.65",
+                "SEX_FMLE": "82.06"
+            },
+            "Rwanda": {
+                "SEX_MLE": "66.88",
+                "SEX_FMLE": "71.24"
+            },
+            "Nepal": {
+                "SEX_MLE": "68.88",
+                "SEX_FMLE": "72.75"
+            },
+            "Mauritania": {
+                "SEX_MLE": "68.08",
+                "SEX_FMLE": "68.73"
+            },
+            "Gabon": {
+                "SEX_MLE": "63.59",
+                "SEX_FMLE": "69.73"
+            },
+            "Armenia": {
+                "SEX_MLE": "72.49",
+                "SEX_FMLE": "79.16"
+            },
+            "Sudan": {
+                "SEX_MLE": "67.55",
+                "SEX_FMLE": "70.76"
+            },
+            "Canada": {
+                "SEX_MLE": "80.4",
+                "SEX_FMLE": "84.05"
+            },
+            "Zambia": {
+                "SEX_MLE": "59.54",
+                "SEX_FMLE": "65.37"
+            },
+            "Nigeria": {
+                "SEX_MLE": "61.2",
+                "SEX_FMLE": "64.1"
+            },
+            "Romania": {
+                "SEX_MLE": "71.95",
+                "SEX_FMLE": "79.26"
+            },
+            "Somalia": {
+                "SEX_MLE": "54.01",
+                "SEX_FMLE": "59.22"
+            },
+            "Japan": {
+                "SEX_MLE": "81.49",
+                "SEX_FMLE": "86.94"
+            },
+            "Colombia": {
+                "SEX_MLE": "76.69",
+                "SEX_FMLE": "81.87"
+            },
+            "Timor-Leste": {
+                "SEX_MLE": "67.93",
+                "SEX_FMLE": "71.41"
+            },
+            "Burkina Faso": {
+                "SEX_MLE": "60.06",
+                "SEX_FMLE": "65.23"
+            },
+            "Bahrain": {
+                "SEX_MLE": "75.04",
+                "SEX_FMLE": "77.02"
+            },
+            "Austria": {
+                "SEX_MLE": "79.44",
+                "SEX_FMLE": "83.78"
+            },
+            "Morocco": {
+                "SEX_MLE": "71.68",
+                "SEX_FMLE": "74.31"
+            },
+            "Tajikistan": {
+                "SEX_MLE": "67.58",
+                "SEX_FMLE": "71.55"
+            },
+            "Israel": {
+                "SEX_MLE": "80.79",
+                "SEX_FMLE": "84.36"
+            },
+            "Iran (Islamic Republic of)": {
+                "SEX_MLE": "75.69",
+                "SEX_FMLE": "79.09"
+            },
+            "Brunei Darussalam": {
+                "SEX_MLE": "73.39",
+                "SEX_FMLE": "75.36"
+            },
+            "Grenada": {
+                "SEX_MLE": "70.63",
+                "SEX_FMLE": "75.33"
+            },
+            "Argentina": {
+                "SEX_MLE": "73.51",
+                "SEX_FMLE": "79.5"
+            },
+            "Congo": {
+                "SEX_MLE": "63.81",
+                "SEX_FMLE": "65.61"
+            },
+            "Germany": {
+                "SEX_MLE": "78.72",
+                "SEX_FMLE": "84.77"
+            },
+            "Czechia": {
+                "SEX_MLE": "76.3",
+                "SEX_FMLE": "81.93"
+            },
+            "Myanmar": {
+                "SEX_MLE": "65.91",
+                "SEX_FMLE": "72.2"
+            },
+            "Cuba": {
+                "SEX_MLE": "75.37",
+                "SEX_FMLE": "80.25"
+            },
+            "Italy": {
+                "SEX_MLE": "80.91",
+                "SEX_FMLE": "84.9"
+            },
+            "Costa Rica": {
+                "SEX_MLE": "78.31",
+                "SEX_FMLE": "83.44"
+            },
+            "Sri Lanka": {
+                "SEX_MLE": "73.8",
+                "SEX_FMLE": "79.81"
+            },
+            "Malawi": {
+                "SEX_MLE": "62.31",
+                "SEX_FMLE": "68.93"
+            },
+            "Gambia": {
+                "SEX_MLE": "63.42",
+                "SEX_FMLE": "67.65"
+            },
+            "United States of America": {
+                "SEX_MLE": "76.28",
+                "SEX_FMLE": "80.73"
+            },
+            "Bangladesh": {
+                "SEX_MLE": "72.99",
+                "SEX_FMLE": "75.64"
+            },
+            "Tonga": {
+                "SEX_MLE": "69.81",
+                "SEX_FMLE": "75.61"
+            },
+            "Eswatini": {
+                "SEX_MLE": "53.36",
+                "SEX_FMLE": "63.18"
+            },
+            "Belgium": {
+                "SEX_MLE": "79.29",
+                "SEX_FMLE": "83.51"
+            },
+            "Spain": {
+                "SEX_MLE": "80.68",
+                "SEX_FMLE": "85.68"
+            },
+            "Madagascar": {
+                "SEX_MLE": "64.1",
+                "SEX_FMLE": "66.6"
+            },
+            "Lebanon": {
+                "SEX_MLE": "74.03",
+                "SEX_FMLE": "79.15"
+            },
+            "Brazil": {
+                "SEX_MLE": "72.45",
+                "SEX_FMLE": "79.39"
+            },
+            "Lesotho": {
+                "SEX_MLE": "47.66",
+                "SEX_FMLE": "54.24"
+            }
+        };
+    </script>
+</body>
+
+</html>
