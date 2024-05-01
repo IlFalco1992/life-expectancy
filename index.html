@@ -72,10 +72,12 @@
                     </div>
                     <button type="submit" class="btn btn-primary mb-3" id="submit">Calculate</button>
                 </form>
-                <h4 class="mb-3" id="res"></h4>
-                <div class="col-12 ruler-container">
-                    <img src="img/ruler.png" alt="ruler" class="img-fluid">
-                    <div class="ruler-percentage"></div>
+                <div style="display: none;" id="results">
+                    <h4 class="mb-3" id="res"></h4>
+                    <div class="col-12 ruler-container">
+                        <img src="img/ruler.png" alt="ruler" class="img-fluid">
+                        <div class="ruler-percentage"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -846,6 +848,7 @@
 
                     $("#res").text((ageInSeconds / lifeExpectancyInSeconds * 100).toFixed(2) + "% of your life has passed");
                     $(".ruler-percentage").css("width", (ageInSeconds / lifeExpectancyInSeconds * 100) + "%");
+                    $("#results").show();
                 });
             });
         </script>
