@@ -13,7 +13,7 @@
     <style>
         .ruler-container {
             position: relative;
-            background-color: green;
+            background-color: #58e558;
         }
 
         .ruler-container img {
@@ -29,7 +29,11 @@
             left: 0;
             width: 0;
             height: 100%;
-            background-color: red;
+            background-color: #e84d5c;
+        }
+
+        .ui-datepicker {
+            z-index: 99999999999999 !important;
         }
     </style>
 </head>
@@ -37,13 +41,18 @@
 <body>
     <div class="container-fluid p-5 bg-primary text-white text-center">
         <h1>This is the ruler of life</h1>
-        <p>Insert the country you live in, your gender and you date of birth to find out how far you are!</p>
+        <p>Insert the country you live in, your gender and you date of birth to find out how far you are!<br /> The data
+            was
+            taken by the WHO and the last available were the 2019 figures<br />If you want to check the raw data
+            yourself you can click <a target="_blank" style="color: white;"
+                href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/life-expectancy-at-birth-(years)">here</a>
+        </p>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Life expectancy ruler</h1>
-                <p>Click on a country to see the life expectancy</p>
+                <h1 class="mt-3">Life expectancy ruler</h1>
+                <p>Select the country you live in, your gender and birth date, then click on "Calculate"!</p>
                 <form id="form">
                     <div class="mb-3">
                         <select class="form-select form-select-lg" aria-label="Select a country..." required>
@@ -825,12 +834,7 @@
                     changeYear: true,
                     yearRange: "-100:+0",
                     dateFormat: "yy-mm-dd",
-                    maxDate: new Date(),
-                    beforeShow: function () {
-                        setTimeout(function () {
-                            $('.ui-datepicker').css('z-index', 99999999999999);
-                        }, 0);
-                    }
+                    maxDate: new Date()
                 });
                 let countries = Object.keys(data).sort();
                 $.each(countries, function (key, value) {
